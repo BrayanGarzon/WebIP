@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tu IP y ubicación</title>
+</head>
+<body>
+  <h2>Detectando tu IP...</h2>
+  <div id="info"></div>
+
+  <script>
+    fetch("https://ipinfo.io/json?token=8d106b4067820f")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("info").innerHTML = `
+          <p><strong>IP:</strong> ${data.ip}</p>
+          <p><strong>Ciudad:</strong> ${data.city}</p>
+          <p><strong>Región:</strong> ${data.region}</p>
+          <p><strong>País:</strong> ${data.country}</p>
+          <p><strong>Coordenadas:</strong> ${data.loc}</p>
+        `;
+      });
+  </script>
+</body>
+</html>
